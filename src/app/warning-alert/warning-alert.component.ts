@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./warning-alert.component.css']
 })
 export class WarningAlertComponent implements OnInit {
+  private message = 'Crytical warning!!!';
+  private messageId = 13;
 
-  constructor() { }
+  getMessage(): string {
+    return this.message;
+  }
+
+  getMessageId(): number {
+    return this.messageId;
+  }
 
   ngOnInit() {
   }
