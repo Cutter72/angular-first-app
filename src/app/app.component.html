@@ -3,9 +3,13 @@
 <input type="text" class="form-control" (input)="onUpdateAlertName($event)"/>
 <label>Alert name two-way binding (input is sent and received, the field/property is binded)</label>
 <input type="text" class="form-control" [(ngModel)]="alertName" />
-<p>{{alertName}}</p>
-<button class="btn btn-primary" [disabled]="!isNewMessageAllowed()" (click)="onAlertCreation()">Add alert</button>
-<button class="btn btn-primary" [disabled]="!isResetAllowed()" (click)="resetAlertName()">Reset input</button>
+<p>{{isResetAllowed() ? alertName : '---'}}</p>
+<button [ngClass]="isResetAllowed() ? 'btn btn-primary' : 'btn btn-default'" [disabled]="!isResetAllowed()" (click)="onAlertCreation()">Add alert</button>
+<button class="btn btn-default" [disabled]="!isResetAllowed()" (click)="resetAlertName()">Reset input</button>
 <p>{{alertCreationStatus}}</p>
+<p *ngIf="isCreated; else noAlert">Alert "{{alertName}}" created!</p>
+<ng-template #noAlert>
+  <p>No alert added watching 4 seconds back in time!</p>
+</ng-template>
 <app-warning-alert></app-warning-alert>
 <app-success-alert></app-success-alert>
