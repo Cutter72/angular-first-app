@@ -34,7 +34,7 @@ export class AppComponent {
   }
 
   isResetAllowed() {
-    if (this.alertName == '') {
+    if (this.alertName == '' || !this.isNewMessageAllowed()) {
       return false;
     }
     return true;
