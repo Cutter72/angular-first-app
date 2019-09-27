@@ -1,7 +1,7 @@
 <h3 class="page-header">I'm the app.component.html</h3>
-<label>Alert name one-way binding (input is sent)</label>
+<label>Alert name one-way binding (input is sent, one-way binding)</label>
 <input type="text" class="form-control" (input)="onUpdateAlertName($event)"/>
-<label>Alert name two-way binding (input is sent and received, the field/property is binded)</label>
+<label>Alert name two-way binding (input is sent and received, the field/property is two-way binded)</label>
 <input type="text" class="form-control" [(ngModel)]="alertName" />
 <p>{{isResetAllowed() ? alertName : '---'}}</p>
 <button [ngClass]="isResetAllowed() ? 'btn btn-primary' : 'btn btn-default'" [disabled]="!isResetAllowed()" (click)="onAlertCreation()">Add alert</button>
