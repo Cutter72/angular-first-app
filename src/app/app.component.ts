@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {WarningAlertComponent} from './warning-alert/warning-alert.component';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,12 @@ import {WarningAlertComponent} from './warning-alert/warning-alert.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  static alertNameGlobal = 'asd';
+  private alertName = 'TEST alert init name';
   private newMessageAllow = false;
   private alertCreationStatus = 'No alert was created!';
-  private alertName = 'TEST alert init name';
   private isCreated = false;
+  alerts = [];
 
   constructor() {
     setTimeout(() => {
@@ -28,20 +29,32 @@ export class AppComponent {
     setTimeout(() => {
       this.isCreated = false;
     }, 4000);
+    this.alerts.push(this.alertName);
+    this.setAlertNameGlobal();
   }
 
   onUpdateAlertName(event: any) {
     this.alertName = (event.target as HTMLInputElement).value;
+    this.setAlertNameGlobal();
   }
 
   resetAlertName() {
     this.alertName = '';
+    this.setAlertNameGlobal();
   }
 
   isResetAllowed() {
-    if (this.alertName === '' || !this.isNewMessageAllowed()) {
-      return false;
+    return !(this.alertName === '' || !this.isNewMessageAllowed());
+  }
+
+  getColor(): string {
+    if (this.isResetAllowed()) {
+      return 'grey';
     }
-    return true;
+    return 'white';
+  }
+
+  setAlertNameGlobal() {
+    AppComponent.alertNameGlobal = this.alertName;
   }
 }

@@ -5,11 +5,10 @@
 <input type="text" class="form-control" [(ngModel)]="alertName" />
 <p>{{isResetAllowed() ? alertName : '---'}}</p>
 <button [ngClass]="isResetAllowed() ? 'btn btn-primary' : 'btn btn-default'" [disabled]="!isResetAllowed()" (click)="onAlertCreation()">Add alert</button>
-<button class="btn btn-default" [disabled]="!isResetAllowed()" (click)="resetAlertName()">Reset input</button>
+<button [ngStyle]="{backgroundColor: getColor()}" class="btn btn-default" [disabled]="!isResetAllowed()" (click)="resetAlertName()">Reset input</button>
 <p>{{alertCreationStatus}}</p>
 <p *ngIf="isCreated; else noAlert">Alert "{{alertName}}" created!</p>
 <ng-template #noAlert>
   <p>No alert added watching 4 seconds back in time!</p>
 </ng-template>
-<app-warning-alert></app-warning-alert>
-<app-success-alert></app-success-alert>
+<app-warning-alert *ngFor="let alert of alerts"></app-warning-alert>

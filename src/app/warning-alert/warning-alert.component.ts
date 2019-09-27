@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-warning-alert',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./warning-alert.component.css']
 })
 export class WarningAlertComponent implements OnInit {
-  private message = 'Crytical warning!!!';
+  private message = AppComponent.alertNameGlobal;
   private messageId = 13;
+
+  // constructor() {
+  //   this.message = AppComponent.alertNameGlobal;
+  // }
 
   getMessage(): string {
     return this.message;
