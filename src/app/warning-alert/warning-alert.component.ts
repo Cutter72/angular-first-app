@@ -10,10 +10,6 @@ export class WarningAlertComponent implements OnInit {
   private message = AppComponent.alertNameGlobal;
   private messageId = 13;
 
-  // constructor() {
-  //   this.message = AppComponent.alertNameGlobal;
-  // }
-
   getMessage(): string {
     return this.message;
   }
