@@ -1,5 +1,6 @@
 <p><b>assignment3.component</b></p>
 <button class="btn btn-info" (click)="visibility=!visibility; logClick()">Display details</button>
+<button class="btn btn-default" (click)="clickLog = []">Reset log</button>
 <p [ngClass]="visibility ? '' : 'invisible'">Secret password = tuna</p>
 <!--<p *ngIf="visibility">Secret password = tuna</p>-->
 <!--<p *ngFor="let logStamp of clickLog" [innerText]="logStamp.timeStamp + ' ' + logStamp.action"-->
